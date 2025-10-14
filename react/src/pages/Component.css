@@ -1,0 +1,32 @@
+.user-message{
+    border-top-left-radius: 4px;
+}
+.user-message::before{
+content: "";
+position: absolute;
+height: 0px;
+width: 0px;
+border-top: 20px solid #bd84e5;
+border-left: 20px solid transparent;
+left: -10px;
+top: 0;
+
+
+}
+.my-message{
+    border-top-right-radius: 10px;
+    right: 0;
+}
+.my-message::before{
+
+content: "";
+position: absolute;
+height: 0px;
+width: 0px;
+border-top: 20px solid #40016d;
+border-right: 20px solid transparent;
+right: -10px;
+top: 0;
+
+}
+

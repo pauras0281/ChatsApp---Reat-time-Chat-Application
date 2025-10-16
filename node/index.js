@@ -11,7 +11,7 @@ import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
 import messageRoutes from "./routes/messageRoutes.js";
-
+import requestRoutes from "./routes/requestRoutes.js";
 
 dotenv.config();
 
@@ -55,6 +55,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chats", chatRoutes);
 app.use("/api/messages", messageRoutes(io));
+app.use("/api/requests", requestRoutes);
 
 // ✅ Socket.io Real-Time Logic
 io.on("connection", (socket) => {

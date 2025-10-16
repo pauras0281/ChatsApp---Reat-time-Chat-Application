@@ -5,6 +5,9 @@ import User from "../models/User.js";
 export const protect = async (req, res, next) => {
   let token;
 
+  console.log("send request");
+  
+
   try {
     // Check for token in Authorization header
     if (
@@ -15,6 +18,7 @@ export const protect = async (req, res, next) => {
 
       // Verify token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);    
+      
 
       // Attach user to request (without password)
       req.user = await User.findById(decoded.id).select("-password");

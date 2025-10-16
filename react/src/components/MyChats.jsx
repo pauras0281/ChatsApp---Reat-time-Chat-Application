@@ -7,13 +7,13 @@ import { setCurrentChat } from "../redux/chatSlice";
 import "./Loader.css";
 
 
-const MyChats = () => {
+const MyChats = ({data}) => {
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
+  const dispatch = useDispatch();  
+  
 
   const { token, user } = useSelector(selectAuth);
 
@@ -99,7 +99,7 @@ const MyChats = () => {
               : "";
 
             return (
-              <div  data-aos="fade-down"
+              <div  data-aos="fade-up"
                 onClick={() => handleOpenChat(chat)}
                 key={chat._id}
                 className="py-2 px-4 flex items-center hover:bg-[#40016d] cursor-pointer"

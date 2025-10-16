@@ -1,0 +1,47 @@
+.hover-btn::after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: #87749566;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    border-right: 1px solid red;
+    border-bottom: 1px solid red;
+    transition: 0.3s ease-in-out;
+}
+.hover-btn:hover::after{
+    top: 0;
+    left: 0;
+}
+.hover-btn::before{
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: #87749566;
+    position: absolute;
+    bottom: -100%;
+    right: -100%;
+    border-left: 1px solid greenyellow;
+    border-top: 1px solid greenyellow;
+    transition: 0.3s ease-in-out;
+}
+.hover-btn:hover::before{
+    bottom: 0;
+    right: 0;
+}
+/* request btn */
+
+.req-hover-btn::after{
+    content: '';
+    height: 100%;
+    width: 1%;
+    background-color: #87749566;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.1s ease-in-out;
+}
+.req-hover-btn:hover::after{
+    top: 0;
+}

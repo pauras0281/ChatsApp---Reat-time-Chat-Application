@@ -44,7 +44,7 @@ const ChatInput = ({chat, token, socket}) => {
 
 
   return (
-    <div className="w-full md:w-1/2 flex gap-2 items-center justify-center absolute bottom-0 px-2 pb-4 bg-[#4f0186] ">
+    <div className="w-full md:w-1/2 flex gap-2 items-center justify-center fixed bottom-0 px-2 pb-4 bg-[#4f0186] ">
           <div className="flex flex-1 bg-white rounded-full px-3 py-1  ">
             <div className=" flex-1 max-w-full flex items-center ">
               <input

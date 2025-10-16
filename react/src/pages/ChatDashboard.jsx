@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { BoltIcon } from "lucide-react";
+import { BoltIcon, Search } from "lucide-react";
 import AllUsers from "../components/AllUsers"; 
 import MyChats from "../components/MyChats";
 
@@ -24,15 +24,17 @@ const ChatDashboard = () => {
             </Link>
           </span>
         </p>
-        <input
+        
+        <input 
+          onFocus={()=>setActive("all-users")}
           type="text"
           placeholder="Search for Users"
           className="bg-[#fff] h-10 rounded-full px-4 outline-0 mb-4 mx-4 md:text-2xl md:mb-6 md:mx-6 md:w-1/2 "
         />
       <div className="flex bg-[#bd84e5] justify-between gap-3 p-4 border-t-[1px] border-black" >
-        <button onClick={()=>setActive("chats")} className={`${active === 'chats'? 'bg-[#4f0186] text-white ': ''} py-1 px-2 flex-1 rounded-full text-black `} >All chats</button>
-        <button onClick={()=>setActive("unseen")} className={`${active === 'unseen'? 'bg-[#4f0186] text-white ': ''} py-1 px-2 flex-1 rounded-full text-black `} >Unseen</button>
-        <button onClick={()=>setActive("all-users")} className={`${active === 'all-users'? 'bg-[#4f0186] text-white ': ''} py-1 flex-1 px-2 rounded-full text-black`}  >All users</button>
+        <button onClick={()=>setActive("chats")} className={` ${active != 'chats'? 'hover:bg-[#969494] text-white hover:text-black hover:font-bold ': ''}  ${active === 'chats'? 'bg-[#4f0186] text-white underline font-bold  ': ''} py-1 px-2 flex-1 rounded-full text-black transition-all duration-[0.5s] `} >All chats</button>
+        <button onClick={()=>setActive("unseen")} className={` ${active != 'unseen'? 'hover:bg-[#969494] text-white hover:text-black hover:font-bold': ''}  ${active === 'unseen'? 'bg-[#4f0186] text-white underline font-bold ': ''} py-1 px-2 flex-1 rounded-full text-black transition-all duration-[0.5s] `} >Unseen</button>
+        <button onClick={()=>setActive("all-users")} className={` ${active != 'all-users'? 'hover:bg-[#969494] text-white hover:text-black hover:font-bold': ''}  ${active === 'all-users'? 'bg-[#4f0186] text-white underline font-bold ': ''} py-1 flex-1 px-2 rounded-full text-black transition-all duration-[0.5s] `}  >All users</button>
       </div>
       </div>
 

@@ -1,6 +1,4 @@
 import {
-  BoltIcon,
-  MoveLeft,
   QrCode,
   LockKeyhole,
   MessageSquareText,
@@ -8,9 +6,13 @@ import {
   Info,
   Users,
   KeySquare,
+  LogOut,
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CommonHeader from "../../components/CommonHeader";
+import Modal from "../../components/Modal";
+import { useState } from "react";
+
 
 const buttonList = [
   {
@@ -39,10 +41,22 @@ const buttonList = [
     route: "/settings/help"
   },
   { name: "Invite a friend", info: "", icon: <Users />,route: "/settings/invite" },
+  { name: "Logout", info: "", icon:<LogOut />,route: "/settings/logout" },
 ];
 
 const Settings = () => {
   const navigate = useNavigate()
+
+  const handleClick = (btn)=>{
+    console.log(btn);
+    
+    if(btn.route === "/settings/logout"){
+      
+
+    }
+    navigate(`${btn.route}`)
+  }
+
   return (
     <div className="bg-[#40016d] min-h-screen flex flex-col justify-baseline pb-6 ">
       <CommonHeader name="settings" />
@@ -72,7 +86,7 @@ const Settings = () => {
 
       {buttonList.map((btn,i) => {
         return (
-          <div onClick={()=>navigate(`${btn.route}`)} key={i} className=" py-2 px-4 flex items-center md:h-[13%] hover:bg-[#4f0186] cursor-pointer ">
+          <div onClick={()=>handleClick(btn)} key={i} className=" py-2 px-4 flex items-center md:h-[13%] hover:bg-[#4f0186] cursor-pointer ">
             <div className="bg-white  h-[50px] w-[50px] rounded-full md:h-[60px] md:w-[60px] flex justify-center items-center ">
               {btn.icon}
             </div>
@@ -86,6 +100,7 @@ const Settings = () => {
           </div>
         );
       })}
+
     </div>
   );
 };

@@ -1,3 +1,7 @@
+.chats{
+    scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer 10+ */
+}
 .user-message{
     border-top-left-radius: 4px;
 }
@@ -30,3 +34,62 @@ top: 0;
 
 }
 
+
+/* From Uiverse.io by Nawsome */ 
+/* From Uiverse.io by TemplateVentures */ 
+.loader {
+  width: 350px;
+  height: 180px;
+  border-radius: 10px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+.loading {
+  /* width: 100%; */
+  background: lightgrey;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 10px;
+  background: #002;
+  border-radius: 10px;
+  z-index: 1;
+  animation: loading 0.6s alternate infinite;
+}
+label {
+  color: #fff;
+  font-size: 18px;
+  animation: bit 0.6s alternate infinite;
+}
+
+@keyframes bit {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes loading {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 70%;
+  }
+  0% {
+    left: -25%;
+  }
+}

@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAuth } from "../redux/authSlice";
 import { setCurrentChat } from "../redux/chatSlice";
+import "./Loader.css";
+
 
 const MyChats = () => {
   const [chats, setChats] = useState([]);
@@ -31,13 +33,13 @@ const MyChats = () => {
   useEffect(() => {
     const fetchChats = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/chats", {
+        const { data } = await axios.get("http://192.168.1.40:5000/api/chats", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         setChats(data);
-        setLoading(false);
+        // setLoading(false)
       } catch (error) {
         console.error("Error fetching chats:", error);
         setLoading(false);
@@ -47,11 +49,32 @@ const MyChats = () => {
     fetchChats();
   }, [token]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <div className=" bg-[#4f0186] flex flex-col justify-baseline">
         {loading ? (
-          <p className="text-white text-center mt-10">Loading chats...</p>
+          // <p className="text-white text-center mt-10">Loading chats...</p>
+          <div className="spinnerContainer relative top-[40%] ">
+  <div className="spinner"></div>
+  <div className="sloader">
+    <p>Loading</p>
+    <div className="words">
+      <span className="word">chats</span>
+      <span className="word">messages</span>
+      <span className="word">users</span>
+      <span className="word">profile pics</span>
+      <span className="word">posts</span>
+    </div>
+  </div>
+</div>
         ) : chats.length === 0 ? (
           <p className="text-white text-center mt-10">No chats yet</p>
         ) : (

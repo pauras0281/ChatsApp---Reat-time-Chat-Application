@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 
 const AuthForm = ({ isLogin, switchToRegister, switchToLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("tom@tom.com");
+  const [password, setPassword] = useState("1234");
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -26,10 +26,10 @@ const AuthForm = ({ isLogin, switchToRegister, switchToLogin }) => {
       let response;
       if (isLogin) {
         // Login request
-        response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, { email, password });
+        response = await axios.post(`http://192.168.1.40:5000/api/auth/login`, { email, password });
       } else {
         // Register request
-        response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, { name, email, password });
+        response = await axios.post(`http://192.168.1.40:5000/api/auth/register`, { name, email, password });
       }
 
       const data = response.data;
@@ -37,7 +37,7 @@ const AuthForm = ({ isLogin, switchToRegister, switchToLogin }) => {
       if (isLogin) {
         dispatch(loginAction(data));
 
-        const socket = io(import.meta.env.VITE_API_URL, { transports: ["websocket"] });
+        const socket = io(`http://192.168.1.40:5000`, { transports: ["websocket"] });
         socket.emit("setup", data._id);
         dispatch(setSocket(socket));
         
